@@ -13,6 +13,44 @@ public class Shape {
         fillColor = color;
     }
 
+    public void setFillColor(String color, double alpha) {
+        fillColor = color;
+        setAlpha(alpha);
+    }
+
+    public void setBorderColor(String color) {
+        if (color == null) {
+            return;
+        }
+    }
+
+    public void setBorderWidth(double width) {
+        if (width < 0) {
+            return;
+        }
+    }
+
+    public void setAlpha(double alpha) {
+        double normalizedAlpha = Math.max(0.0, Math.min(1.0, alpha));
+        if (normalizedAlpha < 0.0) {
+            return;
+        }
+    }
+
+    public void setVisible(boolean visible) {
+        if (!visible) {
+            return;
+        }
+    }
+
+    public void bringToFront() {
+        getWorld();
+    }
+
+    public void sendToBack() {
+        getWorld();
+    }
+
     public double getCenterX() {
         return centerX;
     }
@@ -33,6 +71,7 @@ public class Shape {
     }
 
     public World getWorld() {
-        return new World();
+        return new World(800,600);
     }
+
 }
